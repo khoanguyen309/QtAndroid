@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick
 
 SOURCES += main.cpp \
-    beventure.cpp
+    beventure.cpp \
+    randomgenerator.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +20,5 @@ OTHER_FILES += \
     android/AndroidManifest.xml
 
 HEADERS += \
-    beventure.h
+    beventure.h \
+    randomgenerator.h

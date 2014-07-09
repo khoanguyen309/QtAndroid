@@ -16,10 +16,10 @@ class RandomGenerator
 
     private:
         int seed;
-        const int a;
-        const int m;
-        const int q;
-        const int r;
+        const long int a;
+        const long int m;
+        const long int q;
+        const long int r;
 };
 
 #endif // RANDOMGENERATOR_H

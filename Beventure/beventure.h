@@ -1,6 +1,7 @@
 #ifndef BEVENTURE_H
 #define BEVENTURE_H
 
+#include "time.h"
 #include <QObject>
 #include <QtWidgets/QMessageBox>
 #include <QQmlApplicationEngine>
@@ -29,7 +30,6 @@ class Beventure : public QObject
     private:
         QQmlApplicationEngine& engine;
         QStringList answersList;
-        RandomGenerator* rand;
 };
 
 #endif // BEVENTURE_H

@@ -143,18 +143,20 @@ Window {
             }
         }
 
-        Rectangle {
+        Row {
             id: addRect
-            color: "black"
             anchors.top: grid.bottom
+            anchors.left: rect.left
+            anchors.right: rect.right
+            anchors.leftMargin: 15
+            anchors.rightMargin: 15
             width: rect.width
             height: 80
+            spacing: 10
             Button {
                 id: addBtn
                 signal myClicked(string answer)
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                width: 250
+                width: (rect.width - 40) / 2
                 height: addRect.height
                 objectName: "addAnswer"
                 style: ButtonStyle {
@@ -175,11 +177,7 @@ Window {
 
             Button {
                 id: clearBtn
-                anchors.left: addBtn.right
-                anchors.right: addRect.right
-                anchors.leftMargin: rect.width - (addBtn.width + clearBtn.width + 20)
-                anchors.rightMargin: 10
-                width: 250
+                width: (rect.width - 40) / 2
                 height: addRect.height
                 objectName: "clearAnswer"
                 style: ButtonStyle {

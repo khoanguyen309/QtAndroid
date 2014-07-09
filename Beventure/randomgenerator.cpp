@@ -1,12 +1,12 @@
 #include "randomgenerator.h"
 
 RandomGenerator::RandomGenerator() :
-    a (16807),
-    m (2147483647),
-    q (127773),
-    r (2836)
+    a (16807l),
+    m (2147483647l),
+    q (127773l),
+    r (2836l)
 {
-    seed = QDateTime::currentMSecsSinceEpoch();
+    seed = 1l;
 }
 
 int& RandomGenerator::getSeed() const
