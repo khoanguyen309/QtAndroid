@@ -150,7 +150,10 @@ Window {
             width: rect.width
             height: 80
             Button {
-                anchors.centerIn: addRect
+                id: addBtn
+                signal myClicked(string answer)
+                anchors.left: parent.left
+                anchors.leftMargin: 10
                 width: 250
                 height: addRect.height
                 objectName: "addAnswer"
@@ -164,6 +167,32 @@ Window {
                         verticalAlignment: Text.AlignVCenter
                     }
                 }
+                onClicked: {
+                    myClicked(answerInput.text)
+                    answerInput.text = ""
+                }
+            }
+
+            Button {
+                id: clearBtn
+                anchors.left: addBtn.right
+                anchors.right: addRect.right
+                anchors.leftMargin: rect.width - (addBtn.width + clearBtn.width + 20)
+                anchors.rightMargin: 10
+                width: 250
+                height: addRect.height
+                objectName: "clearAnswer"
+                style: ButtonStyle {
+                    label: Text {
+                        text: qsTr("Clear answer")
+                        font.bold: true
+                        font.pointSize: 20
+                        anchors.centerIn: parent
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
+                onClicked: questionInput.text = ""
             }
         }
 
@@ -177,6 +206,7 @@ Window {
             model: myModel
             delegate: Text {
                 text: modelData
+                font.pointSize: 16
                 color: "white"
             }
         }
@@ -186,6 +216,7 @@ Window {
             anchors.bottom: parent.bottom
             width: rect.width
             height: 80
+            objectName: "bestChoiceBtn"
             style: ButtonStyle {
                 label: Text {
                     text: qsTr("Get your answer")

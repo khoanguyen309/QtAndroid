@@ -7,14 +7,12 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-    QStringList dataList;
-    for (int i = 0; i < 20; ++i)
-        dataList.append("Sample Item");
-    (engine.rootContext())->setContextProperty("myModel", QVariant::fromValue(dataList));
+    Beventure beventure (NULL, &engine);
+    // Initialize
     engine.load(QUrl(QStringLiteral("qrc:///Main.qml")));
-
     QObject* rootObject = engine.rootObjects().first();
-    QObject* addAnsBtn = rootObject->findChild<QObject*>("addAnswer");
-
+    QObject::connect(rootObject->findChild<QObject*>("addAnswer"), SIGNAL(myClicked(QString)), &beventure, SLOT(addAnswer(QString)));
+    QObject::connect(rootObject->findChild<QObject*>("clearAnswer"), SIGNAL(clicked()), &beventure, SLOT(clear()));
+    QObject::connect(rootObject->findChild<QObject*>("bestChoiceBtn"), SIGNAL(clicked()), &beventure, SLOT(bestAnswer()));
     return app.exec();
 }
